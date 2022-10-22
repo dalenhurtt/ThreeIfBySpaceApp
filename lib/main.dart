@@ -75,41 +75,73 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: const BruhState(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+// This is my custom widget that has a state that can change
+class BruhState extends StatefulWidget {
+  const BruhState({super.key});
+
+  @override
+  State<BruhState> createState() => _BruhStateState();
+}
+
+// This is the state for BruhState
+class _BruhStateState extends State<BruhState> {
+  String t = "bruh";
+
+  @override
+  Widget build(BuildContext context) {
+    // Build a grid view
+    return GridView.builder(
+
+        // Grid delegate tells us how to actually format the grid axis
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            // Set how the grid is formatted
+            crossAxisCount: 3,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5),
+
+        // set padding on all sides for each grid element
+        padding: const EdgeInsets.all(50),
+
+        // itemBuilder is a builder for each element/item on the grid.
+        // I can set "itemCount: #," if I want to set the max items in the grid.
+        // It will keep building what I put in itemBuilder's function
+        itemBuilder: (BuildContext context, int i) {
+          // Center() centers the single widget inside of it
+          return Center(
+            // Inside the center() widget is a column of items
+            child: Column(
+              children: [
+                // Inside the column are two things, a text line and an expanded()
+                // widget
+                Text(
+                  "Item number $i",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                // Expanded() expands the child to fill all of the grid space
+                Expanded(
+                  // Add an empty container with a border just to show the empty
+                  // space
+                  child: Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+
+                    // Add trailing commas for the end of lists otherwise the auto
+                    // formatter messes up the indentation for some reason
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
