@@ -1,4 +1,4 @@
-package com.example.threeifbyspace
+package com.example.threeifbyspaceapp
 
 import io.flutter.embedding.android.FlutterActivity
 
