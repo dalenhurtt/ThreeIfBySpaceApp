@@ -1,6 +1,6 @@
 {
-    "name": "threeifbyspace",
-    "short_name": "threeifbyspace",
+    "name": "threeifbyspaceapp",
+    "short_name": "threeifbyspaceapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
