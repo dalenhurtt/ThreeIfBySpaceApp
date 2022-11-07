@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.threeifbyspace">
+    package="com.example.threeifbyspaceapp">
    <application
-        android:label="threeifbyspace"
+        android:label="threeifbyspaceapp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
