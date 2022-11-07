@@ -11,9 +11,8 @@ Future<List<Product>> getProducts(String categoryID) async {
   List<Product> data = <Product>[];
 
   try {
-    String url = Config.url +
-        Config.productURL +
-        "?consumer_key=${Config.key}&consumer_secret=${Config.secret}";
+    String url =
+        "${Config.url}${Config.productURL}?consumer_key=${Config.key}&consumer_secret=${Config.secret}&id=$categoryID";
     var response = await Dio().get(
       url,
       options: Options(
@@ -83,6 +82,7 @@ class Product {
 }
 
 //list for categoreis
+
 class Categories {
   late int id;
   late String name;
@@ -112,7 +112,7 @@ class Images {
     src = json['src'];
   }
 }
-
+/*
 class Category {
   late int categoryID;
   late String categoryName;
@@ -147,3 +147,4 @@ class Image {
     url = json['src'];
   }
 }
+*/
