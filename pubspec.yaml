@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   woocommerce_api: ^0.1.0
   wordpress_api: ^1.2.0
+  dio_http_cache: ^0.3.0
 
 dev_dependencies:
   flutter_test:
