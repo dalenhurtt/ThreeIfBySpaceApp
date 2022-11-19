@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:threeifbyspace/tibs_home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    home: TibsHome(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -125,7 +128,7 @@ class _BruhStateState extends State<BruhState> {
                 // widget
                 Text(
                   "Item number $i",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 // Expanded() expands the child to fill all of the grid space
                 Expanded(
