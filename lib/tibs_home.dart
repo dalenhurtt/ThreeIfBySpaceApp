@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(TibsHome());
+  runApp(MaterialApp(home: TibsHome()));
 }
 
 class TibsHome extends StatefulWidget {
