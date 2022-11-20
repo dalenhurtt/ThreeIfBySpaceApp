@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:threeifbyspace/read.dart';
+import 'package:threeifbyspace/tibs_home.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Read(),
+    home: TibsHome(),
   ));
 }
 
