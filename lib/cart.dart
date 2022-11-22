@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'navbar.dart';
 
 void main() {
-  runApp(const Cart());
+  runApp(const MaterialApp(home: Cart()));
 }
 
 class Cart extends StatefulWidget {
@@ -16,11 +15,10 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(body: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       child: Column(
         children: <Widget>[
-          NavBar(),
           const Text(
             "Shopping Cart",
             style: TextStyle(
@@ -285,6 +283,6 @@ class _CartState extends State<Cart> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

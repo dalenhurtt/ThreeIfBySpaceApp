@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+void main() {
+  runApp(const MaterialApp(home: Shop()));
+}
 
 class Shop extends StatefulWidget {
   const Shop({super.key});
@@ -12,7 +14,8 @@ class Shop extends StatefulWidget {
 class _Shop extends State<Shop> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    return Scaffold(
+        body: GridView.count(
       primary: false,
       padding: const EdgeInsets.all(20),
       crossAxisSpacing: 10,
@@ -91,6 +94,6 @@ class _Shop extends State<Shop> {
           child: const Text('Sound of screams but the'),
         ),
       ],
-    );
+    ));
   }
 }

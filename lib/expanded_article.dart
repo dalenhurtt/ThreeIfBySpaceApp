@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ExpandedArticle());
+  runApp(const MaterialApp(home: ExpandedArticle()));
 }
 
 class ExpandedArticle extends StatefulWidget {
+  const ExpandedArticle({super.key});
+
   @override
-  _ExpandedArticleState createState() => _ExpandedArticleState();
+  State<ExpandedArticle> createState() => _ExpandedArticleState();
 }
 
 // This widget is the root of your application.
@@ -14,7 +16,7 @@ class _ExpandedArticleState extends State<ExpandedArticle> {
   @override
   Widget build(BuildContext context) {
     return 
-        GridView.count(
+        Scaffold(body: GridView.count(
           primary: false,
           padding: const EdgeInsets.all(10.0),
           crossAxisSpacing: 10,
@@ -87,6 +89,6 @@ class _ExpandedArticleState extends State<ExpandedArticle> {
               ),
             ),
           ],
-        );
+        ));
   }
 }

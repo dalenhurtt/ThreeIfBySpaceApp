@@ -1,21 +1,21 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
-class NavBar extends StatefulWidget {
-  @override
-  State<NavBar> createState() => _NavBarState();
+void main() {
+  runApp(const MaterialApp(home: TibsAppBar()));
 }
-class _NavBarState extends State<NavBar> {
+
+class TibsAppBar extends StatefulWidget {
+  const TibsAppBar({super.key});
+
+  @override
+  State<TibsAppBar> createState() => _TibsAppBarState();
+}
+
+class _TibsAppBarState extends State<TibsAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color(0xFF88B434),
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        color: Colors.black,
-        onPressed: () {},
-      ),
       title: Image.asset('assets/tibs-3.png', fit: BoxFit.contain, height: 50),
       actions: <Widget>[
         IconButton(
