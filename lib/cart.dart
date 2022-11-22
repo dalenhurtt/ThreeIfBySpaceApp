@@ -9,13 +9,19 @@ class Cart extends StatefulWidget {
   const Cart({super.key});
 
   @override
+  State<Cart> createState() => _CartState();
+}
+
+class _CartState extends State<Cart> {
+
+  @override
   Widget build(BuildContext context) {
-    return MainAppBar();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       child: Column(
         children: <Widget>[
-          Text(
+          NavBar(),
+          const Text(
             "Shopping Cart",
             style: TextStyle(
               fontSize: 25,
@@ -23,23 +29,23 @@ class Cart extends StatefulWidget {
           ),
           Expanded(
             child: ListView(children: <Widget>[
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       image: DecorationImage(
                           image: NetworkImage(
                               "https://www.threeifbyspace.net/wp-content/uploads/2022/02/bfddd16f94a34277ac370bfe4c2852e9lg-250x250.jpg")),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
                     children: <Widget>[
-                      Container(
+                      const SizedBox(
                           width: 150,
                           child: Text(
                               "Fairy Tail Jellal Fernandes Pop! Vinyl Figure")),
@@ -53,11 +59,11 @@ class Cart extends StatefulWidget {
                               color: Colors.grey,
                             ),
                             child: IconButton(
-                                icon: Icon(Icons.remove),
+                                icon: const Icon(Icons.remove),
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("1",
+                          const Text("1",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           Container(
@@ -72,7 +78,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("\$17.50",
+                          const Text("\$17.50",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                         ],
@@ -81,13 +87,13 @@ class Cart extends StatefulWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              Container(height: 20),
               Row(
                 children: [
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       image: DecorationImage(
                           image: NetworkImage(
@@ -99,7 +105,7 @@ class Cart extends StatefulWidget {
                     children: <Widget>[
                       Container(
                           width: 150,
-                          child: Text(
+                          child: const Text(
                               "Fairy Tail Mavis Vermillion Pop! Vinyl Figure")),
                       Row(
                         children: [
@@ -115,7 +121,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("1",
+                          const Text("1",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           Container(
@@ -130,7 +136,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("\$17.50",
+                          const Text("\$17.50",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                         ],
@@ -139,25 +145,25 @@ class Cart extends StatefulWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       image: DecorationImage(
                           image: NetworkImage(
                               "https://www.threeifbyspace.net/wp-content/uploads/2022/03/240210a70f03499094607b021ba00b5blg-250x250.webp")),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
                     children: <Widget>[
                       Container(
                           width: 150,
-                          child: Text(
+                          child: const Text(
                               "Hunter x Hunter Killua Zoldyck Funko Pop - AAA Anime Exclusive (Common)")),
                       Row(
                         children: [
@@ -173,7 +179,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("6",
+                          const Text("6",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           Container(
@@ -188,7 +194,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("\$105.00",
+                          const Text("\$105.00",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                         ],
@@ -197,26 +203,26 @@ class Cart extends StatefulWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       image: DecorationImage(
                           image: NetworkImage(
                               "https://www.threeifbyspace.net/wp-content/uploads/2022/07/2b3f58cf9e054cc0bf6f8a954dcbabeflg-250x250.jpg")),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
                     children: <Widget>[
                       Container(
                           width: 150,
                           child:
-                              Text("Genshin Impact Paimon Pop! Vinyl Figure")),
+                              const Text("Genshin Impact Paimon Pop! Vinyl Figure")),
                       Row(
                         children: [
                           Container(
@@ -231,7 +237,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("4",
+                          const Text("4",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           Container(
@@ -246,7 +252,7 @@ class Cart extends StatefulWidget {
                                 color: Colors.black,
                                 onPressed: () {}),
                           ),
-                          Text("\$70.00",
+                          const Text("\$70.00",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                         ],
@@ -258,19 +264,19 @@ class Cart extends StatefulWidget {
               ),
               Column(
                 children: [
-                  Text("Subtotal: \$210.00",
+                  const Text("Subtotal: \$210.00",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  Text("Tax and Shipping: \$16.70",
+                  const Text("Tax and Shipping: \$16.70",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  Text("TOTAL: \$226.70",
+                  const Text("TOTAL: \$226.70",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   MaterialButton(
                       onPressed: () {},
                       color: const Color(0xFF88B434),
-                      child: Text("CHECKOUT",
+                      child: const Text("CHECKOUT",
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold)))
                 ],
@@ -280,11 +286,5 @@ class Cart extends StatefulWidget {
         ],
       ),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

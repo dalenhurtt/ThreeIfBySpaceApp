@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'config.dart';
 
 
 void main() {
-  runApp(MaterialApp(home: ExpandedItem()));
+  runApp(const MaterialApp(home: ExpandedItem()));
 }
 class ExpandedItem extends StatelessWidget {
   const ExpandedItem({super.key});
 
   //static var itemImage = Image(image: AssetImage('assets/images/tony_stark_pop.jpeg'));
-  static Color TiBSGreen = Color.fromRGBO(146, 179, 74, 1);
-  static Color TiBsGray = Color.fromARGB(255, 153, 153, 153);
   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
      body: Column(
        children: [
          Positioned(
@@ -37,7 +33,7 @@ class ExpandedItem extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                       style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                       'Naruto (Hokage) Selection AAA Anime Exclusive'
                       )),
@@ -45,16 +41,16 @@ class ExpandedItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.only(top: 10, bottom: 10),
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         style: TextStyle(fontSize: 17.5, fontWeight: FontWeight.w600),
                       '\$20.00'
                       )),
                       Container(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: ExpansionTile(
-                          iconColor: TiBSGreen,
-                          textColor: TiBSGreen,
-                          title: Text(
+                          iconColor: Config.tibsGreen,
+                          textColor: Config.tibsGreen,
+                          title: const Text(
                             style: TextStyle(fontWeight: FontWeight.w500),
                             'Product Details'
                           ),
@@ -81,7 +77,7 @@ class ExpandedItem extends StatelessWidget {
                                   child: Column
                                   (
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: const [
                                   Text('Weight'),
                                   SizedBox(height: 10),
                                   Text('License'),
@@ -98,7 +94,7 @@ class ExpandedItem extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 15),
                                 child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text('0.5 lbs'),
                                   SizedBox(height: 10),
                                   Text('Baruto'),
@@ -127,21 +123,21 @@ class ExpandedItem extends StatelessWidget {
                           children: [
                             FloatingActionButton.extended(
                               onPressed: () => {},
-                              backgroundColor: TiBSGreen,
+                              backgroundColor: Config.tibsGreen,
                               label: const Text('Buy Now'),
                               
                             ),
 
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
 
                             FloatingActionButton.extended(
                               onPressed: () => {},
-                              backgroundColor: TiBSGreen,
+                              backgroundColor: Config.tibsGreen,
                               label: const Text('Add To Cart'),
-                              icon: Icon(Icons.add_shopping_cart),
+                              icon: const Icon(Icons.add_shopping_cart),
                             ),
 
-                            quantityButton()
+                            const QuantityButton()
                   
                           ],
                         ),
@@ -162,61 +158,57 @@ class ExpandedItem extends StatelessWidget {
 }
 
 
-class quantityButton extends StatefulWidget {
-  const quantityButton({super.key});
+class QuantityButton extends StatefulWidget {
+  const QuantityButton({super.key});
 
   @override
-  State<quantityButton> createState() => _quantityButtonState();
+  State<QuantityButton> createState() => _QuantityButtonState();
 }
 
-class _quantityButtonState extends State<quantityButton> {
+class _QuantityButtonState extends State<QuantityButton> {
   int quantity = 0;
-  static Color TiBSGreen = Color.fromRGBO(146, 179, 74, 1);
 
   @override
   Widget build(BuildContext context) {
-    return Container
-    (
-        child: Row(
-          children:
-          [
-            IconButton
-            (
-              onPressed: () => 
-              {
-                if(quantity!=0)
-                {
-                  setState((){
-                  quantity--;
-                })
-                }
-                else
-                {
-                  setState((){
-                  quantity=0;
-                })
-                }
-                
-              },
-              icon: Icon(Icons.remove)
-            ),
+    return Row(
+      children:
+      [
+        IconButton
+        (
+          onPressed: () => 
+          {
+            if(quantity!=0)
+            {
+              setState((){
+              quantity--;
+            })
+            }
+            else
+            {
+              setState((){
+              quantity=0;
+            })
+            }
             
-            Text(
-              style: TextStyle(color: TiBSGreen),
-              quantity.toString()),
+          },
+          icon: const Icon(Icons.remove)
+        ),
+        
+        Text(
+          style: TextStyle(color: Config.tibsGreen),
+          quantity.toString()),
 
-            IconButton
-            (
-              onPressed: () => 
-              {
-                setState((){
-                  quantity++;
-                })
-              },
-              icon: Icon(Icons.add)
-            )
-          ]
-      )
-    );
+        IconButton
+        (
+          onPressed: () => 
+          {
+            setState((){
+              quantity++;
+            })
+          },
+          icon: const Icon(Icons.add)
+        )
+      ]
+      );
   }
 }

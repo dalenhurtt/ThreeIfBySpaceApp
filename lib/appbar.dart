@@ -2,29 +2,27 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 
-class MainAppBar extends StatefulWidget {
+class NavBar extends StatefulWidget {
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color(0xFF88B434),
       leading: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
         color: Colors.black,
         onPressed: () {},
       ),
       title: Image.asset('assets/tibs-3.png', fit: BoxFit.contain, height: 50),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.shopping_cart_sharp, color: Colors.black),
+          icon: const Icon(Icons.shopping_cart_sharp, color: Colors.black),
           onPressed: () {},
         ),
       ],
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

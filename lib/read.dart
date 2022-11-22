@@ -1,48 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Read());
+  runApp(ExpandedArticle());
 }
 
-class Read extends StatefulWidget {
+class ExpandedArticle extends StatefulWidget {
   @override
-  _ReadState createState() => _ReadState();
+  _ExpandedArticleState createState() => _ExpandedArticleState();
 }
 
 // This widget is the root of your application.
-class _ReadState extends State<Read> {
+class _ExpandedArticleState extends State<ExpandedArticle> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.menu),
-              color: Colors.white,
-              onPressed: () {},
-            ),
-            title: Image.network(
-                'https://x5f9g8z5.rocketcdn.me/wp-content/uploads/2016/05/tibs-3.png',
-                fit: BoxFit.contain,
-                height: 50),
-            centerTitle: true,
-            backgroundColor: Colors.lightGreen[600],
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart_sharp,
-                  color: Colors.white,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                onPressed: () {},
-              ),
-            ]),
-        body: GridView.count(
+    return 
+        GridView.count(
           primary: false,
           padding: const EdgeInsets.all(10.0),
           crossAxisSpacing: 10,
@@ -115,6 +87,6 @@ class _ReadState extends State<Read> {
               ),
             ),
           ],
-        ));
+        );
   }
 }
