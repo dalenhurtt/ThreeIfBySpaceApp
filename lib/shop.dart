@@ -1,99 +1,100 @@
 import 'package:flutter/material.dart';
+// import 'package:threeifbyspace/tibs_home.dart';
+import 'dart:developer';
 
+import 'shop_items.dart';
 void main() {
-  runApp(const MaterialApp(home: Shop()));
+  runApp(const MaterialApp(
+  // home: TibsHome(),
+    home: MyShop(
+    categoryId: '9283',
+    )));
 }
 
-class Shop extends StatefulWidget {
-  const Shop({super.key});
+class MyShop extends StatefulWidget {
+  final String categoryId;
+
+  const MyShop({Key? key, required this.categoryId}) : super(key: key);
 
   @override
-  State<Shop> createState() => _Shop();
+  State<MyShop> createState() => _MyShopState();
 }
 
-class _Shop extends State<Shop> {
+class _MyShopState extends State<MyShop> {
+  // _MyShopState({widget.categoryId});
+
   @override
   Widget build(BuildContext context) {
+    // List myproducts_list = getProducts('9283') as List;
+    // print(myproducts_list[0].id);
+
     return Scaffold(
-        body: GridView.count(
-      primary: false,
-      padding: const EdgeInsets.all(20),
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 20,
-      crossAxisCount: 2,
-      childAspectRatio: 0.80, //Needed to avoid bottom overflow
-      children: <Widget>[
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img1.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("Demon Slayer: Kanao Tsuyuri Ichiban Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$35.99', style: TextStyle(color: Colors.green))
-        ]),
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img2.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("My Hero Academia Izuku Midoriya Go and Go! Ichiban Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$39.99', style: TextStyle(color: Colors.green))
-        ]),
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img3.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("My Hero Academia Izuku Midoriya I’m Ready! Ichiban Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$89.99', style: TextStyle(color: Colors.green))
-        ]),
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img4.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("Demon Slayer: Tanjiro Kamado Ichiban Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$35.99', style: TextStyle(color: Colors.green))
-        ]),
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img5.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("Demon Slayer: Shinobu Kocho Ichiban Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$35.99', style: TextStyle(color: Colors.green))
-        ]),
-        Column(children: const [
-          Image(
-            image: AssetImage('assets/Images/img6.jpeg'),
-            fit: BoxFit.cover,
-          ),
-          Text("My Hero Academia Hawks ARTFX J 1:8 Scale Statue",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-          Text('Price \$180.00', style: TextStyle(color: Colors.green))
-        ]),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[200],
-          child: const Text('Heed not the rabble'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[300],
-          child: const Text('Sound of screams but the'),
-        ),
-      ],
-    ));
+        //Lets get the data from json file
+        body: FutureBuilder(
+            future: getProducts(widget.categoryId),
+            builder: (context, data) {
+              if (data.hasError) {
+                return Center(child: Text("${data.error}"));
+              } else if (data.hasData) {
+                var items = data.data as List<Product>;
+                return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 20,
+                            crossAxisCount: 2,
+                            childAspectRatio:
+                                0.80), //Needed to avoid bottom overflow
+
+                    itemCount: items == null ? 0 : items.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Image(
+                                image: NetworkImage(
+                                    items[index].images[0].src.toString()),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(items[index].name.toString(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.bold)),
+                            Text(
+                                //need to uodate this and get all the categories labesl from the
+                                // categories list
+
+                                "${items[index].categoriesName.join(",").toString()}",
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 10,
+                                    color: Color.fromARGB(210, 41, 41, 43))),
+                            // Row(
+                            //   children: [
+                            //     Center(
+                            //       child:
+                            Text("\$ ${items[index].price.toString()}",
+                                style: const TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold)),
+                            //     )
+                            //   ],
+                            // )       //For implementing the actual price and sale price in future
+                          ],
+                        ),
+                      );
+                    });
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            }));
   }
 }
