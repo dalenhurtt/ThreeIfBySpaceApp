@@ -20,9 +20,7 @@ Future<List<Product>> getProducts(String categoryID) async {
     if (response.statusCode == 200) {
       data = (response.data as List).map((e) => Product.fromJson(e)).toList();
     }
-  } on DioError catch (e) {
-    print(e.response);
-  }
+  } on DioError catch (e) {}
   return data;
 }
 
@@ -38,6 +36,7 @@ class Product {
   late String stockStatus;
   late List<Images> images;
   late List<Categories> categories;
+  late List<String> categoriesName;
 
   Product({
     required this.id,
@@ -61,19 +60,40 @@ class Product {
     regularPrice = json['regular_price'];
     salePrice = json['sale_price'];
     stockStatus = json['stock_status'];
+    // images = json['images'][0]['src'];
 
     if (json['categories'] != null) {
       categories = <Categories>[];
+      categoriesName = <String>[];
       json['categories'].forEach((v) {
         categories.add(Categories.fromJson(v));
+        categoriesName.add(Categories.fromJson(v).name);
       });
     }
     if (json['images'] != null) {
       images = <Images>[];
       json['images'].forEach((v) {
+        print(v);
+        //because json['images'] also gives us a json type data
         images.add(Images.fromJson(v));
       });
     }
+  }
+}
+
+//List forimages
+class Images {
+  late String src;
+
+//Constructor
+  Images({
+    required this.src,
+  });
+
+//I think this is the function Dalen has defined to read the images source
+//among all the data
+  Images.fromJson(Map<String, dynamic> json) {
+    src = json['src'];
   }
 }
 
@@ -95,52 +115,3 @@ class Categories {
     return data;
   }
 }
-
-//List forimages
-class Images {
-  late String src;
-
-  Images({
-    required this.src,
-  });
-
-  Images.fromJson(Map<String, dynamic> json) {
-    src = json['src'];
-  }
-}
-/*
-class Category {
-  late int categoryID;
-  late String categoryName;
-  late String categoryDesc;
-  late int parent;
-  late Image image;
-
-  Category({
-    required this.categoryID,
-    required this.categoryName,
-    required this.categoryDesc,
-    required this.image,
-  });
-
-  Category.fromJson(Map<String, dynamic> json) {
-    categoryID = json['id'];
-    categoryName = json['name'];
-    categoryDesc = json['description'];
-    parent = json['parent']; //might be parent_id
-    image = (json['image'] != null ? new Image.fromJson(json['image']) : null)!;
-  }
-}
-
-class Image {
-  late String url;
-
-  Image({
-    required this.url,
-  });
-
-  Image.fromJson(Map<String, dynamic> json) {
-    url = json['src'];
-  }
-}
-*/
