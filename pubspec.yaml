@@ -39,6 +39,7 @@ dependencies:
   woocommerce_api: ^0.1.0
   wordpress_api: ^1.2.0
   dio_http_cache: ^0.3.0
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
